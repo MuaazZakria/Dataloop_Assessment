@@ -1,6 +1,6 @@
 # Dataloop_Assessment
 
-## This assessment provides a hand-on of Dataloops SDK
+## This assessment provides a hand-on of Dataloop's SDK
 
 The Data_Upload_and_Annotations.py creates a new project, dataset, uploads the images, adds UTM metadata, and then upload annotations.
 
