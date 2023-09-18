@@ -11,14 +11,15 @@ project = dl.projects.get(project_name='My-Project')
 dataset = project.datasets.get(dataset_name='My-Dataset')
 
 
-my_filter = dl.Filters()
-my_filter.add_join(field='type', values='point')
+my_filter = dl.Filters(resource=dl.FiltersResource.ANNOTATION)
+my_filter.add(field='type', values='point')
 pages = dataset.items.list(filters=my_filter)
 
 for item in pages.all():
     print('\n')
-    print("Item ID: {}, Item Name: {}".format(item.id,item.name))
-    for annotation in item.annotations.list():
-        print('Coordinates:')
-        print(annotation.coordinates)
+    print("Item ID: {}, Item Name: {}".format(item.item.id,item.item.name))
+    print("Annotation ID: {}, Annotation Label: {}".format(item.id,item.label))
+    x = list(item.coordinates.values())[:2][0]
+    y = list(item.coordinates.values())[:2][1]
+    print("Annotation Position: ({}, {})".format(x, y))
 
